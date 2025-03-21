@@ -19,14 +19,19 @@ st.caption(
 )
 
 # Load the trained ensemble model from a pickle file
-@st.cache_resource  # Cache the model for faster loading
-def load_model():
-    modelfile = "./voting_model.pkl"  # Replace with the correct path to your model file
-    with open(modelfile, "rb") as file:
-        model = pickle.load(file)
-    return model
+modelfile = "./voting_model.pkl"
+with open('voting_model.pkl','wb') as file:
+    pickle.dump(modelfile,file)
+voting_model = pickle.load(open(modelfile, "rb"))
 
-voting_model = load_model()
+@st.cache_resource  # Cache the model for faster loading
+# def load_model():
+#     modelfile = "./voting_model.pkl"  # Replace with the correct path to your model file
+#     with open(modelfile, "rb") as file:
+#         model = pickle.load(file)
+#     return model
+
+# voting_model = load_model()
 
 # Define the wait time predictor function
 def waitime_predictor(
