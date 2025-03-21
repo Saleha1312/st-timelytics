@@ -42,7 +42,7 @@ def waitime_predictor(
     geolocation_state_seller,
     distance,
 ):
-    import numpy as np
+    # import numpy as np
 
     try:
         # Prepare the input array
