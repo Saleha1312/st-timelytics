@@ -19,7 +19,7 @@ st.caption(
 )
 
 # Load the trained ensemble model from a pickle file
-modelfile = "./voting_model.pkl"
+modelfile = "voting_model.pkl"
 with open('voting_model.pkl','wb') as file:
     pickle.dump(modelfile,file)
 voting_model = pickle.load(open(modelfile, "rb"))
