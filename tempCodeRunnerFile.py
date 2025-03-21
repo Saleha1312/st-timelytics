@@ -1,2 +1,2 @@
-img = Image.open("C:\Users\Lenovo\Downloads\Week 6 - Dependencies.zip\Dependencies\assets\supply_chain_optimisation.jpg")
-    # st.image(img)
+if input_array.shape[1] != voting_model.n_features_in_:
+        #     raise ValueError("Feature mismatch: Check input array and model features!")

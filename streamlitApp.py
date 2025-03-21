@@ -33,11 +33,6 @@ voting_model = pickle.load(open(modelfile, "rb"))
 
 
 # Define the function for the wait time predictor using the loaded model. This function takes in the input parameters and returns a predicted wait time in days.
-# import streamlit as st
-# import numpy as np
-# import pandas as pd
-# from PIL import Image
-
 # Load the voting model (Ensure it's imported and properly loaded)
 # Example: from your_model_file import voting_model
 
@@ -65,8 +60,8 @@ def waitime_predictor(
         ]])
 
         # Ensure the input shape matches the model's expected input
-        if input_array.shape[1] != voting_model.n_features_in_:
-            raise ValueError("Feature mismatch: Check input array and model features!")
+        # if input_array.shape[1] != voting_model.n_features_in_:
+        #     raise ValueError("Feature mismatch: Check input array and model features!")
 
         # Make prediction
         prediction = voting_model.predict(input_array)
