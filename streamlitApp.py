@@ -42,23 +42,64 @@ def waitime_predictor(
     geolocation_state_seller,
     distance,
 ):
-    prediction = voting_model.predict(
-        np.array(
-            [
-                [
-                    purchase_dow,
-                    purchase_month,
-                    year,
-                    product_size_cm3,
-                    product_weight_g,
-                    geolocation_state_customer,
-                    geolocation_state_seller,
-                    distance,
-                ]
-            ]
-        )
-    )
-    return round(prediction[0])
+    import numpy as np
+
+    try:
+        # Prepare the input array
+        input_array = np.array([[
+            purchase_dow,
+            purchase_month,
+            year,
+            product_size_cm3,
+            product_weight_g,
+            geolocation_state_customer,
+            geolocation_state_seller,
+            distance,
+        ]])
+        
+        # Ensure the input shape matches the model's expected input
+        print("Input array shape:", input_array.shape)
+        print("Expected features:", voting_model.n_features_in_)
+
+        if input_array.shape[1] != voting_model.n_features_in_:
+            raise ValueError("Feature mismatch: Check input array and model features!")
+
+        # Make prediction
+        prediction = voting_model.predict(input_array)
+        return round(prediction[0])
+
+    except Exception as e:
+        print("Error in waitime_predictor:", e)
+        return None
+
+
+# def waitime_predictor(
+#     purchase_dow,
+#     purchase_month,
+#     year,
+#     product_size_cm3,
+#     product_weight_g,
+#     geolocation_state_customer,
+#     geolocation_state_seller,
+#     distance,
+# ):
+    # prediction = voting_model.predict(
+    #     np.array(
+    #         [
+    #             [
+    #                 purchase_dow,
+    #                 purchase_month,
+    #                 year,
+    #                 product_size_cm3,
+    #                 product_weight_g,
+    #                 geolocation_state_customer,
+    #                 geolocation_state_seller,
+    #                 distance,
+    #             ]
+    #         ]
+    #     )
+    # )
+    # return round(prediction[0])
 
 
 # Define the input parameters using Streamlit's sidebar. These parameters include the purchased day of the week, month, and year, product size, weight, geolocation state of the customer and seller, and distance.
