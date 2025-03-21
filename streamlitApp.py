@@ -23,6 +23,8 @@ st.caption(
 
 # Load the trained ensemble model from the saved pickle file.
 modelfile = "./voting_model.pkl"
+# with open('voting_model.pkl','wb') as file:
+#     pickle.dump(modelfile,file)
 voting_model = pickle.load(open(modelfile, "rb"))
 
 # Caching the model for faster loading
@@ -61,7 +63,7 @@ def waitime_predictor(
 
 # Define the input parameters using Streamlit's sidebar. These parameters include the purchased day of the week, month, and year, product size, weight, geolocation state of the customer and seller, and distance.
 with st.sidebar:
-    img = Image.open("./assets/supply_chain_optimisation.jpg")
+    img = Image.open("supply_chain_optimisation.jpg")
     st.image(img)
     st.header("Input Parameters")
     purchase_dow = st.number_input(
@@ -118,20 +120,11 @@ with st.container():
     }
 
     # Create a DataFrame from the sample dataset.
-    data = {
-        "Purchased Day of the Week": ["0", "3", "1"],
-        "Purchased Month": ["6", "3", "1"],
-        "Purchased Year": ["2018", "2017", "2018"],
-        "Product Size in cm^3": ["37206.0", "63714", "54816"],
-        "Product Weight in grams": ["16250.0", "7249", "9600"],
-        "Geolocation State Customer": ["25", "25", "25"],
-        "Geolocation State Seller": ["20", "7", "20"],
-        "Distance": ["247.94", "250.35", "4.915"],
-    }
-
-    # Create a DataFrame from the sample dataset.
     df = pd.DataFrame(data)
 
     # Display the sample dataset in the Streamlit app.
     st.header("Sample Dataset")
     st.write(df)
+
+
+
